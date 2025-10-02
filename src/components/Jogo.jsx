@@ -4,26 +4,12 @@ import logo from '../assets/logo.png';
 import darkMode from '../assets/dark-mode.png';
 import menu from '../assets/menu.png';
 import pandaImg from '../assets/panda-img.png';
-import setaEsquerda from '../assets/seta-esquerda.png';
-import setaDireita from '../assets/seta-direita.png';
 
-const Referencias = () => {
+const Jogo = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [index, setIndex] = useState(0);
   const navigate = useNavigate();
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
-
-  const textos = [
-    `Importância das técnicas de relaxamento na terapia cognitiva para ansiedade
-Importance of relaxation techniques in cognitive therapy for anxiety`,
-    `Efeitos de intervenções com exercícios respiratórios diafragmáticos nos sintomas de ansiedade em adolescentes: Uma revisão sistemática`,
-    `Aplicação de plantas medicinais no tratamento da ansiedade: uma revisão da literatura
-Application of medicinal plants in the treatment of anxiety: a literature review`
-  ];
-
-  const prev = () => setIndex(prev => (prev === 0 ? textos.length - 1 : prev - 1));
-  const next = () => setIndex(prev => (prev === textos.length - 1 ? 0 : prev + 1));
 
   return (
     <div className="relative min-h-screen w-full flex flex-col items-center bg-[#E6FAFA]">
@@ -46,42 +32,25 @@ Application of medicinal plants in the treatment of anxiety: a literature review
             />
           </div>
         </div>
-
-        <p className="mt-10 text-xl font-bold text-gray-800">REFERÊNCIAS</p>
-
-        <div className="mt-4 w-[360px] h-[380px] bg-green-800/20 rounded-[50px] flex items-center justify-center relative">
-
-          <img 
-            src={setaEsquerda} 
-            alt="Anterior" 
-            className="absolute left-2 top-1/2 transform -translate-y-1/2 h-6 w-6 object-contain cursor-pointer z-10"
-            onClick={prev}
-          />
-
-          <img 
-            src={setaDireita} 
-            alt="Próximo" 
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 h-6 w-6 object-contain cursor-pointer z-10"
-            onClick={next}
-          />
-
-          <div className="absolute top-10 w-72 h-48 bg-green-300 rounded-full flex items-center justify-center px-4 text-center">
-            <p className="text-black text-sm whitespace-pre-line">
-              {textos[index]}
-            </p>
-          </div>
-
-          <img 
-            src={pandaImg} 
-            alt="Panda" 
-            className="absolute w-36 h-auto top-60 left-44 object-contain" 
-          />
-        </div>
+        
+        <img src={pandaImg} alt="Panda" className="mt-6 w-3/4 object-contain" />
+        <p className="mt-6 text-center text-lg font-bold text-gray-800">
+          Bem-vindo ao <span className="text-green-500">PandaGame</span>
+        </p>
+        <p className="mt-4 text-center text-gray-700 text-sm leading-relaxed px-4">
+          O PandaGame é um jogo criado para estimular a diversão e o foco. Nele, o personagem precisa vencer os inimigos coletando os remédios espalhados pelo caminho. Com desafios progressivos e uma jogabilidade simples e envolvente, o game promove atenção, raciocínio rápido e entretenimento acessível para todas as idades.
+        </p>
+        <button className="w-[200px] h-[40px] bg-green-500 mt-6 rounded-xl text-white font-semibold text-base">
+          Jogar
+        </button>
+        <p className="mt-4 text-center text-gray-700 text-sm leading-relaxed px-4">
+          O jogo conta com três fases cheias de ação e suspense, cada uma trazendo obstáculos mais desafiadores e inimigos mais fortes. A cada etapa superada, o jogador se aproxima da grande batalha final, onde somente os mais ágeis e estratégicos conseguem alcançar a vitória.
+        </p>
 
       </div>
 
       {/* DESKTOP */}
-      <div className="hidden md:flex flex-col items-center w-full max-w-[1400px]">
+      <div className="hidden md:flex flex-col items-center w-full max-w-[1400px] px-12">
 
         <div className="w-full h-[80px] bg-white mt-4 rounded-[80px] shadow-md flex items-center justify-between px-12">
           <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
@@ -97,22 +66,29 @@ Application of medicinal plants in the treatment of anxiety: a literature review
           </div>
         </div>
 
-        <p className="mt-10 text-3xl font-bold text-gray-800">REFERÊNCIAS</p>
+        <div className="mt-16 flex w-full justify-center items-start gap-16">
 
-        <div className="mt-8 flex justify-center gap-12 flex-wrap">
-          {textos.map((texto, i) => (
-            <div key={i} className="w-72 h-72 bg-green-300 rounded-full flex items-center justify-center px-4 text-center">
-              <p className="text-black text-sm whitespace-pre-line">{texto}</p>
-            </div>
-          ))}
+          {/* Lado esquerdo: imagem do panda */}
+          <img src={pandaImg} alt="Panda" className="w-96 h-auto object-contain" />
+
+          <div className="flex flex-col max-w-xl">
+            <p className="text-3xl font-bold text-gray-800">
+              Bem-vindo ao <span className="text-green-500">PandaGame</span>
+            </p>
+            <p className="mt-6 text-gray-700 text-base leading-relaxed">
+              O PandaGame é um jogo criado para estimular a diversão e o foco. Nele, o personagem precisa vencer os inimigos coletando os remédios espalhados pelo caminho. Com desafios progressivos e uma jogabilidade simples e envolvente, o game promove atenção, raciocínio rápido e entretenimento acessível para todas as idades.
+            </p>
+
+            <button className="w-48 h-12 bg-green-500 mt-6 self-center rounded-xl text-white font-semibold text-lg hover:bg-green-600 transition-colors">
+              Jogar
+            </button>
+
+            <p className="mt-4 text-gray-700 text-base leading-relaxed">
+              O jogo conta com três fases cheias de ação e suspense, cada uma trazendo obstáculos mais desafiadores e inimigos mais fortes. A cada etapa superada, o jogador se aproxima da grande batalha final, onde somente os mais ágeis e estratégicos conseguem alcançar a vitória.
+            </p>
+          </div>
+
         </div>
-
-        <img 
-          src={pandaImg} 
-          alt="Panda" 
-          className="w-48 h-auto mt-10 object-contain"
-        />
-
       </div>
 
       <div className={`fixed top-0 right-0 h-full w-64 bg-green-600 shadow-lg transform ${isSidebarOpen ? "translate-x-0" : "translate-x-full"} transition-transform duration-300 z-50`}>
@@ -136,4 +112,4 @@ Application of medicinal plants in the treatment of anxiety: a literature review
   );
 };
 
-export default Referencias;
+export default Jogo;

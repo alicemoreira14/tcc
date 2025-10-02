@@ -4,6 +4,7 @@ import Home from './components/Home';
 import Grupo from './components/Grupo';
 import Produtos from './components/Produtos';
 import Referencias from './components/Referencias';
+import Jogo from './components/Jogo';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route path="/grupo" element={<Grupo />} />
         <Route path="/produtos" element={<Produtos />} />
         <Route path="/referencias" element={<Referencias />} />
+        <Route path="/jogo" element={<Jogo />} /> 
       </Routes>
     </Router>
   );

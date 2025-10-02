@@ -34,7 +34,6 @@ const Grupo = () => {
     const whatsappUrl = `https://wa.me/5511930881085?text=${encodeURIComponent(mensagemCompleta)}`;
     const emailUrl = `mailto:alicinha.moreira14@gmail.com?subject=Mensagem PandaApp&body=${encodeURIComponent(mensagemCompleta)}`;
 
-    // Abrir WhatsApp e Email
     window.open(whatsappUrl, '_blank');
     window.open(emailUrl, '_blank');
   };
@@ -42,9 +41,9 @@ const Grupo = () => {
   return (
     <div className="relative w-full flex flex-col items-center bg-[#E6FAFA]">
 
-      <div className="w-[375px] flex flex-col items-center">
+      {/* MOBILE */}
+      <div className="md:hidden w-[375px] flex flex-col items-center">
 
-        {/* Cabeçalho */}
         <div className="w-[375px] h-[54px] bg-white mt-4 rounded-[80px] shadow-md flex items-center justify-between px-4">
           <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
             <img src={logo} alt="Logo" className="h-10 w-10 object-contain" />
@@ -56,39 +55,34 @@ const Grupo = () => {
           </div>
         </div>
 
-        {/* Título */}
         <p className="mt-16 text-center text-xl font-bold tracking-wider text-gray-800">
           Conheça nosso time!
         </p>
 
-        {/* Carrossel */}
         <div className="mt-12 relative flex flex-col items-center justify-center w-full">
           <div className="relative flex items-center justify-center w-full">
             {/* Seta esquerda */}
             <div 
-              className="absolute left-2 h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center cursor-pointer"
+              className="absolute left-2 h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center cursor-pointer z-10"
               onClick={prev}
             >
               <img src={setaEsquerda} alt="Anterior" className="h-5 w-5 object-contain" />
             </div>
 
-            {/* Imagem integrante */}
             <img 
               src={integrantes[index].img} 
               alt={`Integrante ${index + 1}`} 
               className="h-64 w-64 object-contain rounded-md" 
             />
 
-            {/* Seta direita */}
             <div 
-              className="absolute right-2 h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center cursor-pointer"
+              className="absolute right-2 h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center cursor-pointer z-10"
               onClick={next}
             >
               <img src={setaDireita} alt="Próximo" className="h-5 w-5 object-contain" />
             </div>
           </div>
 
-          {/* Nome e username */}
           <div className="mt-4 text-center">
             <p className="font-semibold text-gray-800">{integrantes[index].nome}</p>
             {integrantes[index].user && (
@@ -99,9 +93,41 @@ const Grupo = () => {
 
       </div>
 
-      {/* Seção de contato com fundo degradê invertido */}
+      {/* DESKTOP */}
+      <div className="hidden md:flex flex-col items-center w-full max-w-[1400px]">
+
+        <div className="w-full h-[80px] bg-white mt-4 rounded-[80px] shadow-md flex items-center justify-between px-12">
+          <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
+            <img src={logo} alt="Logo" className="h-12 w-12 object-contain" />
+            <span className="ml-4 font-bold text-gray-800 text-lg">PandaApp</span>
+          </div>
+          <div className="flex space-x-8">
+            <p className="cursor-pointer hover:text-green-500" onClick={() => navigate('/')}>Home</p>
+            <p className="cursor-pointer hover:text-green-500" onClick={() => navigate('/produtos')}>Produtos</p>
+            <p className="cursor-pointer hover:text-green-500" onClick={() => navigate('/grupo')}>Quem somos</p>
+            <p className="cursor-pointer hover:text-green-500" onClick={() => navigate('/referencias')}>Referências</p>
+            <p className="cursor-pointer hover:text-green-500" onClick={() => navigate('/jogo')}>Jogo</p>
+          </div>
+        </div>
+
+        <p className="mt-16 text-center text-3xl font-bold tracking-wider text-gray-800">
+          Conheça nosso time!
+        </p>
+
+        <div className="mt-12 flex justify-center gap-16 flex-wrap">
+          {integrantes.map((int, i) => (
+            <div key={i} className="flex flex-col items-center">
+              <img src={int.img} alt={int.nome} className="h-64 w-64 object-contain rounded-md" />
+              <p className="mt-2 font-semibold text-gray-800">{int.nome}</p>
+              {int.user && <p className="text-gray-600 text-sm">{int.user}</p>}
+            </div>
+          ))}
+        </div>
+
+      </div>
+
       <div className="w-full mt-16 flex flex-col items-center py-10 px-4" style={{ 
-        background: 'linear-gradient(to top, #A3F7D1, #E6FAFA)' // degradê invertido: claro embaixo, mais escuro no topo
+        background: 'linear-gradient(to top, #A3F7D1, #E6FAFA)' 
       }}>
         <p className="text-xl font-bold text-green-600 mb-6">Entre em contato</p>
 
@@ -135,39 +161,17 @@ const Grupo = () => {
         </button>
       </div>
 
-      {/* Sidebar igual Home */}
       <div className={`fixed top-0 right-0 h-full w-64 bg-green-600 shadow-lg transform ${isSidebarOpen ? "translate-x-0" : "translate-x-full"} transition-transform duration-300 z-50`}>
         <div className="flex flex-col mt-20 px-6 space-y-6">
-          <p 
-            className="text-white font-semibold text-lg cursor-pointer hover:text-green-200 transition-colors duration-200"
-            onClick={() => { navigate('/'); setIsSidebarOpen(false); }}
-          >
-            Home
-          </p>
-          <p 
-            className="text-white font-semibold text-lg cursor-pointer hover:text-green-200 transition-colors duration-200"
-            onClick={() => { navigate('/produtos'); setIsSidebarOpen(false); }}
-          >
-            Produtos
-          </p>
-          <p 
-            className="text-white font-semibold text-lg cursor-pointer hover:text-green-200 transition-colors duration-200"
-            onClick={() => { navigate('/grupo'); setIsSidebarOpen(false); }}
-          >
-            Quem somos
-          </p>
-          <p className="text-white font-semibold text-lg cursor-pointer hover:text-green-200 transition-colors duration-200">Referências</p>
+          <p className="text-white font-semibold text-lg cursor-pointer hover:text-green-200 transition-colors duration-200" onClick={() => { navigate('/'); setIsSidebarOpen(false); }}>Home</p>
+          <p className="text-white font-semibold text-lg cursor-pointer hover:text-green-200 transition-colors duration-200" onClick={() => { navigate('/produtos'); setIsSidebarOpen(false); }}>Produtos</p>
+          <p className="text-white font-semibold text-lg cursor-pointer hover:text-green-200 transition-colors duration-200" onClick={() => { navigate('/grupo'); setIsSidebarOpen(false); }}>Quem somos</p>
+          <p className="text-white font-semibold text-lg cursor-pointer hover:text-green-200 transition-colors duration-200" onClick={() => { navigate('/referencias'); setIsSidebarOpen(false); }}>Referências</p>
+          <p className="text-white font-semibold text-lg cursor-pointer hover:text-green-200 transition-colors duration-200" onClick={() => { navigate('/jogo'); setIsSidebarOpen(false); }}>Jogo</p>
         </div>
       </div>
 
-      {/* Overlay */}
-      {isSidebarOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-30 z-40"
-          onClick={toggleSidebar}
-        ></div>
-      )}
-
+      {isSidebarOpen && <div className="fixed inset-0 bg-black bg-opacity-30 z-40" onClick={toggleSidebar}></div>}
     </div>
   );
 };
