@@ -101,7 +101,7 @@ const Grupo = () => {
 
       {/* Seção de contato com fundo degradê invertido */}
       <div className="w-full mt-16 flex flex-col items-center py-10 px-4" style={{ 
-        background: 'linear-gradient(to top, #A3F7D1, #E6FAFA)' // degradê invertido: claro embaixo e mais escuro no topo
+        background: 'linear-gradient(to top, #A3F7D1, #E6FAFA)' // degradê invertido: claro embaixo, mais escuro no topo
       }}>
         <p className="text-xl font-bold text-green-600 mb-6">Entre em contato</p>
 
@@ -138,8 +138,18 @@ const Grupo = () => {
       {/* Sidebar igual Home */}
       <div className={`fixed top-0 right-0 h-full w-64 bg-green-600 shadow-lg transform ${isSidebarOpen ? "translate-x-0" : "translate-x-full"} transition-transform duration-300 z-50`}>
         <div className="flex flex-col mt-20 px-6 space-y-6">
-          <p className="text-white font-semibold text-lg cursor-pointer hover:text-green-200 transition-colors duration-200">Jogo</p>
-          <p className="text-white font-semibold text-lg cursor-pointer hover:text-green-200 transition-colors duration-200">Produtos</p>
+          <p 
+            className="text-white font-semibold text-lg cursor-pointer hover:text-green-200 transition-colors duration-200"
+            onClick={() => { navigate('/'); setIsSidebarOpen(false); }}
+          >
+            Home
+          </p>
+          <p 
+            className="text-white font-semibold text-lg cursor-pointer hover:text-green-200 transition-colors duration-200"
+            onClick={() => { navigate('/produtos'); setIsSidebarOpen(false); }}
+          >
+            Produtos
+          </p>
           <p 
             className="text-white font-semibold text-lg cursor-pointer hover:text-green-200 transition-colors duration-200"
             onClick={() => { navigate('/grupo'); setIsSidebarOpen(false); }}

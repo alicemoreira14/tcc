@@ -23,13 +23,18 @@ const Home = () => {
     navigate('/grupo');
   };
 
+  const goToProdutos = () => {
+    setIsSidebarOpen(false);
+    navigate('/produtos');
+  };
+
   return (
     <div className="relative min-h-screen w-full flex justify-center bg-[#E6FAFA]">
       <div className="w-[375px] flex flex-col items-center">
 
         {/* Cabeçalho */}
         <div className="w-[375px] h-[54px] bg-white mt-4 rounded-[80px] shadow-md flex items-center justify-between px-4">
-          <div className="flex items-center">
+          <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
             <img src={logo} alt="Logo" className="h-10 w-10 object-contain" />
             <span className="ml-3 font-bold text-gray-800 text-base">PandaApp</span>
           </div>
@@ -161,15 +166,30 @@ const Home = () => {
       {/* Sidebar */}
       <div className={`fixed top-0 right-0 h-full w-64 bg-green-600 shadow-lg transform ${isSidebarOpen ? "translate-x-0" : "translate-x-full"} transition-transform duration-300 z-50`}>
         <div className="flex flex-col mt-20 px-6 space-y-6">
-          <p className="text-white font-semibold text-lg cursor-pointer hover:text-green-200 transition-colors duration-200">Jogo</p>
-          <p className="text-white font-semibold text-lg cursor-pointer hover:text-green-200 transition-colors duration-200">Produtos</p>
+          <p 
+            className="text-white font-semibold text-lg cursor-pointer hover:text-green-200 transition-colors duration-200"
+            onClick={() => { navigate('/'); setIsSidebarOpen(false); }}
+          >
+            Home
+          </p>
+          <p 
+            className="text-white font-semibold text-lg cursor-pointer hover:text-green-200 transition-colors duration-200"
+            onClick={goToProdutos}
+          >
+            Produtos
+          </p>
           <p 
             className="text-white font-semibold text-lg cursor-pointer hover:text-green-200 transition-colors duration-200"
             onClick={goToGrupo}
           >
             Quem somos
           </p>
-          <p className="text-white font-semibold text-lg cursor-pointer hover:text-green-200 transition-colors duration-200">Referências</p>
+          <p 
+            className="text-white font-semibold text-lg cursor-pointer hover:text-green-200 transition-colors duration-200"
+            onClick={() => { navigate('/referencias'); setIsSidebarOpen(false); }}
+          >
+            Referências
+          </p>
         </div>
       </div>
 
