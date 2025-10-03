@@ -62,7 +62,7 @@ const Grupo = () => {
         <div className={`w-[375px] h-[54px] mt-4 rounded-[80px] shadow-md flex items-center justify-between px-4 ${isDarkMode ? 'bg-gray-700' : 'bg-white'}`}>
           <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
             <img src={logo} alt="Logo" className="h-10 w-10 object-contain" />
-            <span className={`ml-3 font-bold text-base ${isDarkMode ? 'text-black' : 'text-gray-800'}`}>PandaApp</span>
+            <span className={`ml-3 font-bold text-base ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>PandaApp</span>
           </div>
           <div className="flex items-center space-x-3">
             <img 
@@ -80,7 +80,6 @@ const Grupo = () => {
           </div>
         </div>
 
-        {/* Título igual ao de REFERÊNCIAS */}
         <p className={`mt-10 text-2xl font-bold tracking-wide text-center ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
           Conheça nosso time!
         </p>
@@ -98,7 +97,7 @@ const Grupo = () => {
             <img 
               src={integrantes[index].img} 
               alt={`Integrante ${index + 1}`} 
-              className="h-64 w-64 object-contain rounded-md" 
+              className="h-64 w-64 object-contain rounded-[76px]" 
             />
 
             <div 
@@ -125,7 +124,7 @@ const Grupo = () => {
         <div className={`w-full h-[80px] mt-4 rounded-[80px] shadow-md flex items-center justify-between px-12 ${isDarkMode ? 'bg-gray-700' : 'bg-white'}`}>
           <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
             <img src={logo} alt="Logo" className="h-12 w-12 object-contain" />
-            <span className={`ml-4 font-bold text-lg ${isDarkMode ? 'text-black' : 'text-gray-800'}`}>PandaApp</span>
+            <span className={`ml-4 font-bold text-lg ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>PandaApp</span>
           </div>
           <div className="flex space-x-8">
             <p className={`cursor-pointer ${isDarkMode ? 'text-white' : 'text-gray-800'} hover:text-green-500`} onClick={() => navigate('/')}>Home</p>
@@ -142,7 +141,6 @@ const Grupo = () => {
           </div>
         </div>
 
-        {/* Título igual ao de REFERÊNCIAS */}
         <p className={`mt-10 text-4xl font-bold tracking-wide text-center ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
           Conheça nosso time!
         </p>
@@ -150,7 +148,7 @@ const Grupo = () => {
         <div className="mt-12 flex justify-center gap-16 flex-wrap">
           {integrantes.map((int, i) => (
             <div key={i} className="flex flex-col items-center">
-              <img src={int.img} alt={int.nome} className="h-64 w-64 object-contain rounded-md" />
+              <img src={int.img} alt={int.nome} className="h-64 w-64 object-contain rounded-[76px]" />
               <p className={`mt-2 font-semibold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>{int.nome}</p>
               {int.user && <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'} text-sm`}>{int.user}</p>}
             </div>
@@ -170,21 +168,21 @@ const Grupo = () => {
           placeholder="Nome" 
           value={nome} 
           onChange={e => setNome(e.target.value)}
-          className="w-[375px] max-w-full mb-4 px-4 py-3 rounded-xl border-2 border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500"
+          className={`w-[375px] max-w-full mb-4 px-4 py-3 rounded-xl border-2 border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500 ${isDarkMode ? 'text-white placeholder-white' : 'text-black placeholder-gray-500'}`}
         />
         <input 
           type="email" 
           placeholder="Email" 
           value={email} 
           onChange={e => setEmail(e.target.value)}
-          className="w-[375px] max-w-full mb-4 px-4 py-3 rounded-xl border-2 border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500"
+          className={`w-[375px] max-w-full mb-4 px-4 py-3 rounded-xl border-2 border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500 ${isDarkMode ? 'text-white placeholder-white' : 'text-black placeholder-gray-500'}`}
         />
         <textarea 
           placeholder="Mensagem" 
           value={mensagem}
           onChange={e => setMensagem(e.target.value)}
-          className="w-[375px] max-w-full mb-4 px-4 py-3 rounded-xl border-2 border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500 resize-none"
           rows={4}
+          className={`w-[375px] max-w-full mb-4 px-4 py-3 rounded-xl border-2 border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500 resize-none ${isDarkMode ? 'text-white placeholder-white' : 'text-black placeholder-gray-500'}`}
         />
 
         <button 
