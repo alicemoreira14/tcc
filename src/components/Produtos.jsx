@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import darkMode from '../assets/dark-mode.png';
@@ -18,8 +18,20 @@ import produto9 from '../assets/produto9.png';
 const Produtos = () => {
   const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const [index, setIndex] = useState(0);
   const [indexPeca, setIndexPeca] = useState(0);
+
+  useEffect(() => {
+    const savedDarkMode = localStorage.getItem("darkMode") === "true";
+    setIsDarkMode(savedDarkMode);
+  }, []);
+
+  const toggleDarkMode = () => {
+    const newValue = !isDarkMode;
+    setIsDarkMode(newValue);
+    localStorage.setItem("darkMode", newValue);
+  };
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
@@ -68,35 +80,44 @@ Digite r para desativar o modo de rodízio automático e desligar todos os difus
   const next = () => setIndex(prev => (prev === quadrados.length - 1 ? 0 : prev + 1));
 
   const prevPeca = () => setIndexPeca(prev => (prev === 0 ? produtos.length - 1 : prev - 1));
-  const nextPeca = () => setIndexPeca(prev => (indexPeca === produtos.length - 1 ? 0 : indexPeca + 1));
+  const nextPeca = () => setIndexPeca(prev => (indexPeca === produtos.length - 1 ? 0 : prev + 1));
+
+  const darkBg = "bg-gray-800"; 
+  const darkHeader = "bg-gray-700"; 
+  const darkCardGreen = "bg-green-800 text-white"; 
+  const darkCardWhite = "bg-white text-black"; 
+  const tituloColor = isDarkMode ? "text-white" : "text-gray-800"; // Ajuste aqui
 
   return (
-    <div className="relative w-full bg-[#E6FAFA] min-h-screen flex flex-col items-center">
+    <div className={`relative w-full min-h-screen flex flex-col items-center ${isDarkMode ? darkBg : 'bg-[#E6FAFA]'}`}>
 
       {/* MOBILE */}
       <div className="md:hidden w-[375px] flex flex-col items-center">
-        {/* Cabeçalho mobile */}
-        <div className="w-[375px] h-[54px] bg-white mt-4 rounded-[80px] shadow-md flex items-center justify-between px-4">
+
+        {/* Header */}
+        <div className={`w-[375px] h-[54px] mt-4 rounded-[30px] shadow-md flex items-center justify-between px-4 ${isDarkMode ? darkHeader : 'bg-white'}`}>
           <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
             <img src={logo} alt="Logo" className="h-10 w-10 object-contain" />
-            <span className="ml-3 font-bold text-gray-800 text-base">PandaApp</span>
+            <span className={`ml-3 font-bold text-base ${isDarkMode ? 'text-black' : 'text-black'}`}>PandaApp</span>
           </div>
           <div className="flex items-center space-x-3">
-            <img src={darkMode} alt="Dark Mode" className="h-6 w-6 object-contain" />
+            <img src={darkMode} alt="Dark Mode" className="h-6 w-6 object-contain cursor-pointer" onClick={toggleDarkMode} />
             <img src={menu} alt="Menu" className="h-6 w-6 object-contain cursor-pointer" onClick={toggleSidebar} />
           </div>
         </div>
 
-        <p className="mt-16 text-center text-xl font-bold tracking-wider text-gray-800">
+        {/* Título Manual */}
+        <p className={`mt-16 text-center text-2xl font-bold tracking-wide ${tituloColor}`}>
           Manual de Utilização <br /> Dispositivo Sensorial de Respiração Guiada
         </p>
 
+        {/* Quadrados */}
         <div className="mt-12 relative flex items-center justify-center w-full">
           <div className="absolute left-[-10px] h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center cursor-pointer z-10" onClick={prev}>
             <img src={setaEsquerda} alt="Anterior" className="h-5 w-5 object-contain" />
           </div>
 
-          <div className="w-72 h-[520px] rounded-lg bg-green-700 text-white font-semibold text-sm p-4 flex flex-col justify-center items-center text-center relative mx-16">
+          <div className={`w-72 h-[520px] rounded-lg p-4 flex flex-col justify-center items-center text-center relative mx-16 ${isDarkMode ? darkCardGreen : 'bg-green-700 text-white'}`}>
             <div className="absolute top-0 left-0 w-full bg-black text-white font-bold text-center rounded-t-lg py-1">
               {quadrados[index].tituloPreto}
             </div>
@@ -108,13 +129,17 @@ Digite r para desativar o modo de rodízio automático e desligar todos os difus
           </div>
         </div>
 
-        <p className="mt-8 text-center text-lg font-bold text-gray-800">Peças Utilizadas</p>
+        {/* Título Peças */}
+        <p className={`mt-8 text-center text-2xl font-bold tracking-wide ${tituloColor}`}>
+          Peças Utilizadas
+        </p>
+
         <div className="mt-2 relative flex items-center justify-center w-full">
           <div className="absolute left-[-20px] h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center cursor-pointer z-10" onClick={prevPeca}>
             <img src={setaEsquerda} alt="Anterior" className="h-5 w-5 object-contain" />
           </div>
 
-          <div className="w-64 h-64 bg-white rounded-lg flex flex-col items-center justify-center relative p-2 mx-16">
+          <div className={`w-64 h-64 rounded-lg flex flex-col items-center justify-center relative p-2 mx-16 ${darkCardWhite}`}>
             <img src={produtos[indexPeca]} alt={`Produto ${indexPeca + 1}`} className="h-48 w-48 object-contain"/>
             <div className="absolute bottom-0 left-0 w-full bg-black text-white font-bold text-center py-1 rounded-b-lg">
               {nomesProdutos[indexPeca]}
@@ -130,29 +155,45 @@ Digite r para desativar o modo de rodízio automático e desligar todos os difus
       {/* DESKTOP */}
       <div className="hidden md:flex flex-col items-center w-full max-w-[1400px]">
 
-        <div className="w-full h-[80px] bg-white mt-4 rounded-[80px] shadow-md flex items-center justify-between px-12">
+        <div className={`w-full h-[80px] mt-4 rounded-[30px] shadow-md flex items-center justify-between px-12 ${isDarkMode ? darkHeader : 'bg-white'}`}>
           <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
             <img src={logo} alt="Logo" className="h-12 w-12 object-contain" />
-            <span className="ml-4 font-bold text-gray-800 text-lg">PandaApp</span>
+            <span className={`ml-4 font-bold text-lg ${isDarkMode ? 'text-black' : 'text-gray-800'}`}>PandaApp</span>
           </div>
           <div className="flex space-x-8">
-            <p className="cursor-pointer hover:text-green-500" onClick={() => navigate('/')}>Home</p>
-            <p className="cursor-pointer hover:text-green-500" onClick={() => navigate('/produtos')}>Produtos</p>
-            <p className="cursor-pointer hover:text-green-500" onClick={() => navigate('/grupo')}>Quem somos</p>
-            <p className="cursor-pointer hover:text-green-500" onClick={() => navigate('/referencias')}>Referências</p>
-            <p className="cursor-pointer hover:text-green-500" onClick={() => navigate('/jogo')}>Jogo</p>
+            {['Home','Produtos','Quem somos','Referências','Jogo'].map((item,i) => (
+              <p 
+                key={i} 
+                className={`cursor-pointer ${isDarkMode ? 'text-white' : 'text-gray-800'} hover:text-green-500`} 
+                onClick={() => {
+                  let rota = '/';
+                  switch(item) {
+                    case 'Home': rota = '/'; break;
+                    case 'Produtos': rota = '/produtos'; break;
+                    case 'Quem somos': rota = '/grupo'; break;
+                    case 'Referências': rota = '/referencias'; break;
+                    case 'Jogo': rota = '/jogo'; break;
+                  }
+                  navigate(rota);
+                }}
+              >
+                {item}
+              </p>
+            ))}
+            <img src={darkMode} alt="Dark Mode" className="h-6 w-6 object-contain cursor-pointer" onClick={toggleDarkMode} />
           </div>
         </div>
 
-        <p className="mt-16 text-center text-3xl font-bold tracking-wider text-gray-800">
+        {/* Título Manual */}
+        <p className={`mt-16 text-center text-4xl font-bold tracking-wide ${tituloColor}`}>
           Manual de Utilização <br /> Dispositivo Sensorial de Respiração Guiada
         </p>
 
+        {/* Quadrados desktop */}
         <div className="mt-12 flex flex-col items-center w-full">
-          {/* 3 quadrados em cima */}
           <div className="flex justify-center gap-16 w-full flex-wrap">
-            {quadrados.slice(0, 3).map((q, i) => (
-              <div key={i} className="w-80 h-[540px] rounded-lg bg-green-700 text-white font-semibold text-sm p-6 flex flex-col justify-center items-center text-center relative">
+            {quadrados.slice(0, 5).map((q, i) => (
+              <div key={i} className={`w-80 h-[540px] rounded-lg p-6 flex flex-col justify-center items-center text-center relative ${isDarkMode ? darkCardGreen : 'bg-green-700 text-white'}`}>
                 <div className="absolute top-0 left-0 w-full bg-black text-white font-bold text-center rounded-t-lg py-2">
                   {q.tituloPreto}
                 </div>
@@ -161,45 +202,52 @@ Digite r para desativar o modo de rodízio automático e desligar todos os difus
             ))}
           </div>
 
-          <div className="mt-12 flex justify-center gap-16 w-full flex-wrap">
-            {quadrados.slice(3).map((q, i) => (
-              <div key={i} className="w-80 h-[540px] rounded-lg bg-green-700 text-white font-semibold text-sm p-6 flex flex-col justify-center items-center text-center relative">
-                <div className="absolute top-0 left-0 w-full bg-black text-white font-bold text-center rounded-t-lg py-2">
-                  {q.tituloPreto}
+          {/* Título Peças */}
+          <p className={`mt-20 text-center text-4xl font-bold tracking-wide ${tituloColor}`}>
+            Peças Utilizadas
+          </p>
+
+          <div className="mt-10 grid grid-cols-5 gap-x-28 gap-y-16 w-full justify-items-center">
+            {produtos.map((p, i) => (
+              <div key={i} className={`w-64 h-64 rounded-lg flex flex-col items-center justify-center relative p-2 ${darkCardWhite}`}>
+                <img src={p} alt={`Produto ${i + 1}`} className="h-48 w-48 object-contain"/>
+                <div className="absolute bottom-0 left-0 w-full bg-black text-white font-bold text-center py-1 rounded-b-lg">
+                  {nomesProdutos[i]}
                 </div>
-                <p className="mt-14 whitespace-pre-line">{q.textoVerde}</p>
               </div>
             ))}
           </div>
         </div>
-
-        <p className="mt-20 text-center text-3xl font-bold tracking-wider text-gray-800">
-          Peças Utilizadas
-        </p>
-        <div className="mt-10 grid grid-cols-5 gap-x-28 gap-y-16 w-full justify-items-center">
-          {produtos.map((p, i) => (
-            <div key={i} className="w-64 h-64 bg-white rounded-lg flex flex-col items-center justify-center relative p-2">
-              <img src={p} alt={`Produto ${i + 1}`} className="h-48 w-48 object-contain"/>
-              <div className="absolute bottom-0 left-0 w-full bg-black text-white font-bold text-center py-1 rounded-b-lg">
-                {nomesProdutos[i]}
-              </div>
-            </div>
-          ))}
-        </div>
-
       </div>
 
-      <div className={`fixed top-0 right-0 h-full w-64 bg-green-600 shadow-lg transform ${isSidebarOpen ? "translate-x-0" : "translate-x-full"} transition-transform duration-300 z-50`}>
+      {/* Sidebar */}
+      <div className={`fixed top-0 right-0 h-full w-64 shadow-lg transform ${isSidebarOpen ? "translate-x-0" : "translate-x-full"} transition-transform duration-300 z-50 ${isDarkMode ? darkBg : 'bg-green-600'}`}>
         <div className="flex flex-col mt-20 px-6 space-y-6">
-          <p className="text-white font-semibold text-lg cursor-pointer hover:text-green-200" onClick={() => { navigate('/'); setIsSidebarOpen(false); }}>Home</p>
-          <p className="text-white font-semibold text-lg cursor-pointer hover:text-green-200" onClick={() => { navigate('/produtos'); setIsSidebarOpen(false); }}>Produtos</p>
-          <p className="text-white font-semibold text-lg cursor-pointer hover:text-green-200" onClick={() => { navigate('/grupo'); setIsSidebarOpen(false); }}>Quem somos</p>
-          <p className="text-white font-semibold text-lg cursor-pointer hover:text-green-200" onClick={() => { navigate('/referencias'); setIsSidebarOpen(false); }}>Referências</p>
-          <p className="text-white font-semibold text-lg cursor-pointer hover:text-green-200" onClick={() => { navigate('/jogo'); setIsSidebarOpen(false); }}>Jogo</p>
+          {['Home','Produtos','Quem somos','Referências','Jogo'].map((item,i)=>(
+            <p 
+              key={i} 
+              className="text-white font-semibold text-lg cursor-pointer hover:text-green-200" 
+              onClick={() => {
+                let rota = '/';
+                switch(item) {
+                  case 'Home': rota = '/'; break;
+                  case 'Produtos': rota = '/produtos'; break;
+                  case 'Quem somos': rota = '/grupo'; break;
+                  case 'Referências': rota = '/referencias'; break;
+                  case 'Jogo': rota = '/jogo'; break;
+                }
+                navigate(rota);
+                setIsSidebarOpen(false);
+              }}
+            >
+              {item}
+            </p>
+          ))}
         </div>
       </div>
 
       {isSidebarOpen && <div className="fixed inset-0 bg-black bg-opacity-30 z-40" onClick={toggleSidebar}></div>}
+
     </div>
   );
 };
