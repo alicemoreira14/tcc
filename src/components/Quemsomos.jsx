@@ -10,7 +10,7 @@ import gustavo from '../assets/gustavo.png';
 import setaEsquerda from '../assets/seta-esquerda.png';
 import setaDireita from '../assets/seta-direita.png';
 
-const Grupo = () => {
+const Quemsomos = () => {
   const navigate = useNavigate();
   const [index, setIndex] = useState(0);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -210,4 +210,4 @@ const Grupo = () => {
   );
 };
 
-export default Grupo;
+export default Quemsomos;

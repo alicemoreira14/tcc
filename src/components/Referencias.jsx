@@ -121,7 +121,7 @@ Application of medicinal plants in the treatment of anxiety: a literature review
             <span className={`ml-4 font-bold text-lg ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>PandaApp</span>
           </div>
           <div className="flex space-x-8">
-            {['Home','Produtos','Quem somos','Referências','Jogo'].map((item,i) => (
+            {['Home','Produtos','Quemsomos','Referências','Jogo'].map((item,i) => (
               <p 
                 key={i} 
                 className={`cursor-pointer ${isDarkMode ? 'text-white' : 'text-gray-800'} hover:text-emerald-200`} 
@@ -130,7 +130,7 @@ Application of medicinal plants in the treatment of anxiety: a literature review
                   switch(item) {
                     case 'Home': rota = '/'; break;
                     case 'Produtos': rota = '/produtos'; break;
-                    case 'Quem somos': rota = '/grupo'; break;
+                    case 'Quemsomos': rota = '/grupo'; break;
                     case 'Referências': rota = '/referencias'; break;
                     case 'Jogo': rota = '/jogo'; break;
                   }
@@ -176,7 +176,7 @@ Application of medicinal plants in the treatment of anxiety: a literature review
       {/* Sidebar */}
       <div className={`fixed top-0 right-0 h-full w-64 shadow-lg transform ${isSidebarOpen ? "translate-x-0" : "translate-x-full"} transition-transform duration-300 z-50 ${isDarkMode ? darkBg : 'bg-emerald-300'}`}>
         <div className="flex flex-col mt-20 px-6 space-y-6">
-          {['Home','Produtos','Quem somos','Referências','Jogo'].map((item,i)=>(
+          {['Home','Produtos','Quemsomos','Referências','Jogo'].map((item,i)=>(
             <p 
               key={i} 
               className="text-white font-semibold text-lg cursor-pointer hover:text-emerald-00" 
@@ -185,7 +185,7 @@ Application of medicinal plants in the treatment of anxiety: a literature review
                 switch(item) {
                   case 'Home': rota = '/'; break;
                   case 'Produtos': rota = '/produtos'; break;
-                  case 'Quem somos': rota = '/grupo'; break;
+                  case 'Quemsomos': rota = '/grupo'; break;
                   case 'Referências': rota = '/referencias'; break;
                   case 'Jogo': rota = '/jogo'; break;
                 }

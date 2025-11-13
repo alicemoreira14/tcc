@@ -132,6 +132,26 @@ Reproduz uma meditação correspondente ao momento.` },
             <img src={setaDireita} alt="Próximo" className="h-5 w-5 object-contain" />
           </div>
         </div>
+        
+        {/* VÍDEO YOUTUBE (MOBILE) */}
+        <p className={`mt-16 text-center text-2xl font-bold tracking-wide ${tituloColor}`}>
+            Vídeo Demonstrativo
+        </p>
+        <div className="mt-4 mb-16 w-[350px] aspect-video">
+            <iframe 
+                width="350" 
+                height="197" 
+                src="https://www.youtube.com/embed/n4W4DoL531o" 
+                title="YouTube video player" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerPolicy="strict-origin-when-cross-origin" 
+                allowFullScreen
+                className="w-full h-full rounded-lg shadow-xl"
+            ></iframe>
+        </div>
+        {/* FIM VÍDEO YOUTUBE (MOBILE) */}
+
       </div>
 
       {/* DESKTOP */}
@@ -200,6 +220,26 @@ Reproduz uma meditação correspondente ao momento.` },
             ))}
           </div>
         </div>
+
+        {/* VÍDEO YOUTUBE (DESKTOP) */}
+        <p className={`mt-20 text-center text-4xl font-bold tracking-wide ${tituloColor}`}>
+            Vídeo Demonstrativo
+        </p>
+        <div className="mt-10 mb-20 w-3/4 max-w-4xl aspect-video">
+            <iframe 
+                width="853" 
+                height="480" 
+                src="https://www.youtube.com/embed/n4W4DoL531o" 
+                title="YouTube video player" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerPolicy="strict-origin-when-cross-origin" 
+                allowFullScreen
+                className="w-full h-full rounded-lg shadow-xl"
+            ></iframe>
+        </div>
+        {/* FIM VÍDEO YOUTUBE (DESKTOP) */}
+
       </div>
 
       {/* Sidebar */}
