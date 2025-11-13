@@ -54,7 +54,7 @@ const Grupo = () => {
     : 'bg-gradient-to-t from-[#A3F7D1] via-[#CFFFE2] to-[#E6FAFA]';
 
   return (
-    <div className={`relative w-full flex flex-col items-center ${isDarkMode ? 'bg-gray-800' : 'bg-[#E6FAFA]'}`}>
+    <div className={`relative w-full flex flex-col items-center ${isDarkMode ? 'bg-gray-800' : 'bg-gray-200'}`}>
 
       {/* MOBILE */}
       <div className="md:hidden w-[375px] flex flex-col items-center">
@@ -88,7 +88,7 @@ const Grupo = () => {
         <div className="mt-12 relative flex flex-col items-center justify-center w-full">
           <div className="relative flex items-center justify-center w-full">
             <div 
-              className="absolute left-2 h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center cursor-pointer z-10"
+              className="absolute left-2 h-10 w-10 rounded-full bg-gray-900 flex items-center justify-center cursor-pointer z-10"
               onClick={prev}
             >
               <img src={setaEsquerda} alt="Anterior" className="h-5 w-5 object-contain" />
@@ -101,7 +101,7 @@ const Grupo = () => {
             />
 
             <div 
-              className="absolute right-2 h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center cursor-pointer z-10"
+              className="absolute right-2 h-10 w-10 rounded-full bg-gray-900 flex items-center justify-center cursor-pointer z-10"
               onClick={next}
             >
               <img src={setaDireita} alt="Próximo" className="h-5 w-5 object-contain" />
@@ -159,7 +159,7 @@ const Grupo = () => {
 
       {/* Contato */}
       <div className={`w-full mt-16 flex flex-col items-center py-20 px-4 ${contatoBg}`}>
-        <p className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-green-600'} mb-6`}>
+        <p className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-emerald-600'} mb-6`}>
           Entre em contato
         </p>
 
@@ -168,25 +168,25 @@ const Grupo = () => {
           placeholder="Nome" 
           value={nome} 
           onChange={e => setNome(e.target.value)}
-          className={`w-[375px] max-w-full mb-4 px-4 py-3 rounded-xl border-2 border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500 ${isDarkMode ? 'text-white placeholder-white' : 'text-black placeholder-gray-500'}`}
+          className={`w-[375px] max-w-full mb-4 px-4 py-3 rounded-xl border-2 border-emerald-600 focus:outline-none focus:ring-2 focus:ring-green-500 ${isDarkMode ? 'text-white placeholder-white' : 'text-black placeholder-gray-500'}`}
         />
         <input 
           type="email" 
           placeholder="Email" 
           value={email} 
           onChange={e => setEmail(e.target.value)}
-          className={`w-[375px] max-w-full mb-4 px-4 py-3 rounded-xl border-2 border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500 ${isDarkMode ? 'text-white placeholder-white' : 'text-black placeholder-gray-500'}`}
+          className={`w-[375px] max-w-full mb-4 px-4 py-3 rounded-xl border-2 border-emerald-600 focus:outline-none focus:ring-2 focus:ring-green-500 ${isDarkMode ? 'text-white placeholder-white' : 'text-black placeholder-gray-500'}`}
         />
         <textarea 
           placeholder="Mensagem" 
           value={mensagem}
           onChange={e => setMensagem(e.target.value)}
           rows={4}
-          className={`w-[375px] max-w-full mb-4 px-4 py-3 rounded-xl border-2 border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500 resize-none ${isDarkMode ? 'text-white placeholder-white' : 'text-black placeholder-gray-500'}`}
+          className={`w-[375px] max-w-full mb-4 px-4 py-3 rounded-xl border-2 border-emerald-600 focus:outline-none focus:ring-2 focus:ring-green-500 resize-none ${isDarkMode ? 'text-white placeholder-white' : 'text-black placeholder-gray-500'}`}
         />
 
         <button 
-          className="w-[375px] max-w-full py-3 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-colors"
+          className="w-[375px] max-w-full py-3 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-700 transition-colors"
           onClick={handleEnviar}
         >
           Enviar
@@ -194,7 +194,7 @@ const Grupo = () => {
       </div>
 
       {/* Sidebar */}
-      <div className={`fixed top-0 right-0 h-full w-64 ${isDarkMode ? 'bg-gray-700' : 'bg-green-600'} shadow-lg transform ${isSidebarOpen ? "translate-x-0" : "translate-x-full"} transition-transform duration-300 z-50`}>
+      <div className={`fixed top-0 right-0 h-full w-64 ${isDarkMode ? 'bg-gray-700' : 'bg-emerald-600'} shadow-lg transform ${isSidebarOpen ? "translate-x-0" : "translate-x-full"} transition-transform duration-300 z-50`}>
         <div className="flex flex-col mt-20 px-6 space-y-6">
           <p className="text-white font-semibold text-lg cursor-pointer hover:text-green-200 transition-colors duration-200" onClick={() => { navigate('/'); setIsSidebarOpen(false); }}>Home</p>
           <p className="text-white font-semibold text-lg cursor-pointer hover:text-green-200 transition-colors duration-200" onClick={() => { navigate('/produtos'); setIsSidebarOpen(false); }}>Produtos</p>

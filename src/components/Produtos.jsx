@@ -35,11 +35,6 @@ const Produtos = () => {
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
   const quadrados = [
-    { tituloPreto: "MONTAGEM", textoVerde: `1. Conecte o Arduino à fonte de 5V ou bateria recarregável.
-2. Insira o cartão microSD no DFPlayer Mini, contendo áudios nomeados como 0001.mp3, 0002.mp3, etc.
-3. Certifique-se de que os difusores estão com líquido e corretamente conectados.
-4. Abra o aplicativo que enviará os comandos Bluetooth (ainda em desenvolvimento no Figma).
-5. Ligue o dispositivo.` },
     { tituloPreto: "MODO DE FUNCIONAMENTO", textoVerde: `1 O usuário liga o dispositivo.
 2 Abre o app e escolhe o modo de respiração (ex: Relaxamento).
 3 O app envia os parâmetros de respiração e aroma desejado.
@@ -48,17 +43,6 @@ Controla o brilho do LED para guiar a respiração.
 Vibra durante a fase de “segurar”.
 Ativa o aroma selecionado no início da inspiração.
 Reproduz uma meditação correspondente ao momento.` },
-    { tituloPreto: "TEMPOS DE RESPIRAÇÃO", textoVerde: `Digite 1 para definir o tempo de inspiração para 6 segundos.
-Digite 2 para definir o tempo de inspiração para 4 segundos.
-Digite 3 para definir o tempo de expiração para 7 segundos.
-Digite 4 para definir o tempo de expiração para 4 segundos.` },
-    { tituloPreto: "CICLO DE RESPIRAÇÃO", textoVerde: `Digite 7 para iniciar ou pausar a respiração guiada.
-Você também pode apertar o botão físico no dispositivo para executar essa mesma função.` },
-    { tituloPreto: "DIFUSORES DE AROMA", textoVerde: `Digite A para ativar o difusor 1, com aroma de lavanda. (Digite “a” para desativar)
-Digite B para ativar o difusor 2, com aroma de hortelã. (Digite “b” para desativar)
-Digite C para ativar o difusor 3, com aroma de camomila. (Digite “c” para desativar)
-Digite R para ativar o modo de rodízio automático de aromas, onde os três difusores se alternam automaticamente a cada 30 segundos.
-Digite r para desativar o modo de rodízio automático e desligar todos os difusores.` }
   ];
 
   const produtos = [ produto3,produto5, produto6,produto8, produto9,produto10,produto11,produto12];
@@ -81,8 +65,8 @@ Digite r para desativar o modo de rodízio automático e desligar todos os difus
   const nextPeca = () => setIndexPeca(prev => (indexPeca === produtos.length - 1 ? 0 : prev + 1));
 
   const darkBg = "bg-gray-800"; 
-  const darkHeader = "bg-gray-700"; 
-  const darkCardGreen = "bg-green-800 text-white"; 
+  const darkHeader = "bg-gray-500"; 
+  const darkCardGreen = "bg-emerald-700 text-white"; 
   const darkCardWhite = "bg-white text-black"; 
   const tituloColor = isDarkMode ? "text-white" : "text-gray-800"; // Ajuste aqui
 
@@ -111,18 +95,18 @@ Digite r para desativar o modo de rodízio automático e desligar todos os difus
 
         {/* Quadrados */}
         <div className="mt-12 relative flex items-center justify-center w-full">
-          <div className="absolute left-[-10px] h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center cursor-pointer z-10" onClick={prev}>
+          <div className="absolute left-[-10px] h-10 w-10 rounded-full bg-gray-800 flex items-center justify-center cursor-pointer z-10" onClick={prev}>
             <img src={setaEsquerda} alt="Anterior" className="h-5 w-5 object-contain" />
           </div>
 
-          <div className={`w-72 h-[520px] rounded-lg p-4 flex flex-col justify-center items-center text-center relative mx-16 ${isDarkMode ? darkCardGreen : 'bg-green-700 text-white'}`}>
-            <div className="absolute top-0 left-0 w-full bg-black text-white font-bold text-center rounded-t-lg py-1">
+          <div className={`w-72 h-[450px] rounded-lg p-4 flex flex-col justify-center items-center text-center relative mx-16 ${isDarkMode ? darkCardGreen : 'bg-emerald-700 text-white'}`}>
+            <div className="absolute top-0 left-0 w-full bg-emerald-900 text-white font-bold text-center rounded-t-lg py-1">
               {quadrados[index].tituloPreto}
             </div>
             <p className="mt-12 whitespace-pre-line">{quadrados[index].textoVerde}</p>
           </div>
 
-          <div className="absolute right-[-10px] h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center cursor-pointer z-10" onClick={next}>
+          <div className="absolute right-[-10px] h-10 w-10 rounded-full bg-gray-800 flex items-center justify-center cursor-pointer z-10" onClick={next}>
             <img src={setaDireita} alt="Próximo" className="h-5 w-5 object-contain" />
           </div>
         </div>
@@ -133,18 +117,18 @@ Digite r para desativar o modo de rodízio automático e desligar todos os difus
         </p>
 
         <div className="mt-2 relative flex items-center justify-center w-full">
-          <div className="absolute left-[-20px] h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center cursor-pointer z-10" onClick={prevPeca}>
+          <div className="absolute left-[-20px] h-10 w-10 rounded-full bg-gray-800 flex items-center justify-center cursor-pointer z-10" onClick={prevPeca}>
             <img src={setaEsquerda} alt="Anterior" className="h-5 w-5 object-contain" />
           </div>
 
           <div className={`w-64 h-64 rounded-lg flex flex-col items-center justify-center relative p-2 mx-16 ${darkCardWhite}`}>
             <img src={produtos[indexPeca]} alt={`Produto ${indexPeca + 1}`} className="h-48 w-48 object-contain"/>
-            <div className="absolute bottom-0 left-0 w-full bg-black text-white font-bold text-center py-1 rounded-b-lg">
+            <div className="absolute bottom-0 left-0 w-full bg-emerald-900 text-white font-bold text-center py-1 rounded-b-lg">
               {nomesProdutos[indexPeca]}
             </div>
           </div>
 
-          <div className="absolute right-[-20px] h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center cursor-pointer z-10" onClick={nextPeca}>
+          <div className="absolute right-[-20px] h-10 w-10 rounded-full bg-gray-800 flex items-center justify-center cursor-pointer z-10" onClick={nextPeca}>
             <img src={setaDireita} alt="Próximo" className="h-5 w-5 object-contain" />
           </div>
         </div>
@@ -191,7 +175,7 @@ Digite r para desativar o modo de rodízio automático e desligar todos os difus
         <div className="mt-12 flex flex-col items-center w-full">
           <div className="flex justify-center gap-16 w-full flex-wrap">
             {quadrados.slice(0, 5).map((q, i) => (
-              <div key={i} className={`w-80 h-[540px] rounded-lg p-6 flex flex-col justify-center items-center text-center relative ${isDarkMode ? darkCardGreen : 'bg-green-700 text-white'}`}>
+              <div key={i} className={`w-80 h-[540px] rounded-lg p-6 flex flex-col justify-center items-center text-center relative ${isDarkMode ? darkCardGreen : 'bg-emerald-700 text-white'}`}>
                 <div className="absolute top-0 left-0 w-full bg-black text-white font-bold text-center rounded-t-lg py-2">
                   {q.tituloPreto}
                 </div>
@@ -209,7 +193,7 @@ Digite r para desativar o modo de rodízio automático e desligar todos os difus
             {produtos.map((p, i) => (
               <div key={i} className={`w-64 h-64 rounded-lg flex flex-col items-center justify-center relative p-2 ${darkCardWhite}`}>
                 <img src={p} alt={`Produto ${i + 1}`} className="h-48 w-48 object-contain"/>
-                <div className="absolute bottom-0 left-0 w-full bg-black text-white font-bold text-center py-1 rounded-b-lg">
+                <div className="absolute bottom-0 left-0 w-full bg-emerald-900 text-white font-bold text-center py-1 rounded-b-lg">
                   {nomesProdutos[i]}
                 </div>
               </div>
@@ -219,7 +203,7 @@ Digite r para desativar o modo de rodízio automático e desligar todos os difus
       </div>
 
       {/* Sidebar */}
-      <div className={`fixed top-0 right-0 h-full w-64 shadow-lg transform ${isSidebarOpen ? "translate-x-0" : "translate-x-full"} transition-transform duration-300 z-50 ${isDarkMode ? darkBg : 'bg-green-600'}`}>
+      <div className={`fixed top-0 right-0 h-full w-64 shadow-lg transform ${isSidebarOpen ? "translate-x-0" : "translate-x-full"} transition-transform duration-300 z-50 ${isDarkMode ? darkBg : 'bg-emerald-700'}`}>
         <div className="flex flex-col mt-20 px-6 space-y-6">
           {['Home','Produtos','Quem somos','Referências','Jogo'].map((item,i)=>(
             <p 

@@ -77,7 +77,7 @@ const Home = () => {
             <div className="mt-6 w-full flex flex-col items-center px-4">
               <img src={pandaImg} alt="Panda" className="w-3/4 object-contain" />
               <p className={`mt-4 text-center text-xl font-bold tracking-wider ${isDarkMode ? darkText : 'text-gray-800'}`}>
-                Bem-vindo ao <span className="text-green-500 font-bold">PandaApp</span>
+                Bem-vindo ao <span className="text-emerald-600 font-bold">PandaApp</span>
               </p>
               <p className={`mt-4 text-center text-sm leading-relaxed ${isDarkMode ? darkText : 'text-gray-700'}`}>
                 O PandaApp é um aplicativo criado para ajudar na redução da ansiedade e promoção do bem-estar. Ele combina aromaterapia com aromas naturais, meditação guiada e respiração diafragmática para estimular o relaxamento de forma natural e acessível.
@@ -88,7 +88,7 @@ const Home = () => {
             <div className="mt-6 flex flex-col items-center space-y-4 w-full px-4">
               {[planta, meditacao, vento].map((img, i) => (
                 <div key={i} className={`w-[350px] h-[65px] rounded-xl shadow-md flex items-center px-4 ${isDarkMode ? darkCard : 'bg-white'}`}>
-                  <div className="h-10 w-10 bg-green-100 rounded-md flex items-center justify-center">
+                  <div className="h-10 w-10 bg-emerald-200 rounded-md flex items-center justify-center">
                     <img src={img} alt="" className="h-6 w-6 object-contain" />
                   </div>
                   <div className="ml-4 flex flex-col">
@@ -101,10 +101,10 @@ const Home = () => {
 
             {/* BOTÕES MOBILE */}
             <div className="mt-4 flex flex-col space-y-4 w-full px-4">
-              <button className="w-full h-[60px] bg-green-500 rounded-xl text-white font-semibold text-lg">
+              <button className="w-full h-[60px] bg-emerald-600 rounded-xl text-white font-semibold text-lg">
                 Baixar Agora Grátis
               </button>
-              <button className={`w-full h-[60px] rounded-xl border text-green-500 font-semibold text-lg ${isDarkMode ? 'border-gray-400 bg-gray-700 text-white' : 'border-green-500 bg-white'}`}>
+              <button className={`w-full h-[60px] rounded-xl border text-emerald-600 font-semibold text-lg ${isDarkMode ? 'border-gray-400 bg-gray-700 text-white' : 'border-emerald-600 bg-white'}`}>
                 Saiba Mais
               </button>
             </div>
@@ -139,7 +139,7 @@ const Home = () => {
               </div>
               <div className="flex items-center space-x-6">
                 <div className="flex space-x-8">
-                  <p className={`cursor-pointer ${isDarkMode ? darkText : 'text-black'} hover:text-green-500`} onClick={() => navigate('/grupo')}>Grupo</p>
+                  <p className={`cursor-pointer ${isDarkMode ? darkText : 'text-black'} hover:text-green-500`} onClick={() => navigate('/Quem somos')}>Quem somos</p>
                   <p className={`cursor-pointer ${isDarkMode ? darkText : 'text-black'} hover:text-green-500`} onClick={() => navigate('/referencias')}>Referências</p>
                   <p className={`cursor-pointer ${isDarkMode ? darkText : 'text-black'} hover:text-green-500`} onClick={() => navigate('/produtos')}>Produtos</p>
                   <p className={`cursor-pointer ${isDarkMode ? darkText : 'text-black'} hover:text-green-500`} onClick={() => navigate('/jogo')}>Jogo</p>
@@ -157,7 +157,7 @@ const Home = () => {
             <div className="mt-10 w-full flex items-center justify-between px-8">
               <div className="flex flex-col max-w-lg">
                 <p className={`text-3xl font-bold ${isDarkMode ? darkText : 'text-gray-800'}`}>
-                  Bem-vindo ao <span className="text-green-500 font-bold">PandaApp</span>
+                  Bem-vindo ao <span className="text-emerald-500 font-bold">PandaApp</span>
                 </p>
                 <p className={`mt-4 text-base leading-relaxed ${isDarkMode ? darkText : 'text-gray-700'}`}>
                   O PandaApp é um aplicativo criado para ajudar na redução da ansiedade e promoção do bem-estar. Ele combina aromaterapia com aromas naturais, meditação guiada e respiração diafragmática para estimular o relaxamento de forma natural e acessível.
@@ -183,10 +183,10 @@ const Home = () => {
 
             {/* BOTÕES DESKTOP */}
             <div className="mt-8 flex space-x-6 w-full px-8">
-              <button className="w-1/2 h-[60px] bg-green-500 rounded-xl text-white font-semibold text-lg">
+              <button className="w-1/2 h-[60px] bg-emerald-500 rounded-xl text-white font-semibold text-lg">
                 Baixar Agora Grátis
               </button>
-              <button className={`w-1/2 h-[60px] rounded-xl border text-green-500 font-semibold text-lg ${isDarkMode ? 'border-gray-400 bg-gray-700 text-white' : 'border-green-500 bg-white'}`}>
+              <button className={`w-1/2 h-[60px] rounded-xl border text-emerald-500 font-semibold text-lg ${isDarkMode ? 'border-gray-400 bg-gray-700 text-white' : 'border-emerald-500 bg-white'}`}>
                 Saiba Mais
               </button>
             </div>
@@ -212,10 +212,10 @@ const Home = () => {
       </div>
 
       {/* SIDEBAR MOBILE */}
-      <div className={`fixed top-0 right-0 h-full shadow-lg transform ${isSidebarOpen ? "translate-x-0" : "translate-x-full"} transition-transform duration-300 z-50 ${isDarkMode ? darkBg : 'bg-green-600'}`}>
+      <div className={`fixed top-0 right-0 h-full shadow-lg transform ${isSidebarOpen ? "translate-x-0" : "translate-x-full"} transition-transform duration-300 z-50 ${isDarkMode ? darkBg : 'bg-emerald-600'}`}>
         <div className="flex flex-col mt-20 px-6 space-y-6">
           {[
-            { nome: 'Quem Somos', rota: '/grupo' },
+            { nome: 'Quem Somos', rota: '/Quem somos' },
             { nome: 'Referências', rota: '/referencias' },
             { nome: 'Produtos', rota: '/produtos' },
             { nome: 'Jogo', rota: '/jogo' }
@@ -234,7 +234,7 @@ const Home = () => {
       )}
 
       {/* FOOTER */}
-      <footer className={`w-full py-4 flex justify-center items-center mt-auto ${isDarkMode ? darkBg : 'bg-green-900'}`}>
+      <footer className={`w-full py-4 flex justify-center items-center mt-auto ${isDarkMode ? darkBg : 'bg-emerald-500'}`}>
         <p className={`text-sm text-center ${isDarkMode ? darkText : 'text-white'}`}>
           © 2025 PandaApp. Todos os direitos reservados.
         </p>

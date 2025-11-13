@@ -45,7 +45,7 @@ Application of medicinal plants in the treatment of anxiety: a literature review
   // Cores do modo escuro
   const darkBg = "bg-gray-800"; 
   const darkHeader = "bg-gray-700"; 
-  const darkCardGreen = "bg-green-800 text-white"; 
+  const darkCardGreen = "bg-emerald-700 text-white"; 
   const tituloColor = isDarkMode ? "text-white" : "text-gray-800"; 
 
   return (
@@ -98,7 +98,7 @@ Application of medicinal plants in the treatment of anxiety: a literature review
             href={links[index]} 
             target="_blank" 
             rel="noopener noreferrer"
-            className={`absolute top-10 w-72 h-48 rounded-3xl flex items-center justify-center px-4 text-center shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl ${isDarkMode ? darkCardGreen : 'bg-green-100'}`}
+            className={`absolute top-10 w-72 h-48 rounded-3xl flex items-center justify-center px-4 text-center shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl ${isDarkMode ? darkCardGreen : 'bg-emerald-300'}`}
           >
             <p className={`text-sm whitespace-pre-line leading-relaxed font-roboto ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>{textos[index]}</p>
           </a>
@@ -115,7 +115,7 @@ Application of medicinal plants in the treatment of anxiety: a literature review
       {/* DESKTOP */}
       <div className="hidden md:flex flex-col items-center w-full max-w-[1400px]">
 
-        <div className={`w-full h-[80px] mt-4 rounded-[30px] shadow-lg flex items-center justify-between px-12 ${isDarkMode ? darkHeader : 'bg-white'}`}>
+        <div className={`w-full h-[80px] mt-4 rounded-[30px] shadow-lg flex items-center justify-between px-12 ${isDarkMode ? darkHeader : 'bg-white-100'}`}>
           <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
             <img src={logo} alt="Logo" className="h-12 w-12 object-contain" />
             <span className={`ml-4 font-bold text-lg ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>PandaApp</span>
@@ -124,7 +124,7 @@ Application of medicinal plants in the treatment of anxiety: a literature review
             {['Home','Produtos','Quem somos','Referências','Jogo'].map((item,i) => (
               <p 
                 key={i} 
-                className={`cursor-pointer ${isDarkMode ? 'text-white' : 'text-gray-800'} hover:text-green-500`} 
+                className={`cursor-pointer ${isDarkMode ? 'text-white' : 'text-gray-800'} hover:text-emerald-200`} 
                 onClick={() => {
                   let rota = '/';
                   switch(item) {
@@ -158,7 +158,7 @@ Application of medicinal plants in the treatment of anxiety: a literature review
               href={links[i]} 
               target="_blank" 
               rel="noopener noreferrer"
-              className={`w-72 h-72 rounded-3xl flex items-center justify-center px-6 text-center shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer ${isDarkMode ? darkCardGreen : 'bg-green-100'}`}
+              className={`w-72 h-72 rounded-3xl flex items-center justify-center px-6 text-center shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer ${isDarkMode ? darkCardGreen : 'bg-emerald-300'}`}
             >
               <p className={`text-base whitespace-pre-line leading-relaxed font-roboto ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>{texto}</p>
             </a>
@@ -174,12 +174,12 @@ Application of medicinal plants in the treatment of anxiety: a literature review
       </div>
 
       {/* Sidebar */}
-      <div className={`fixed top-0 right-0 h-full w-64 shadow-lg transform ${isSidebarOpen ? "translate-x-0" : "translate-x-full"} transition-transform duration-300 z-50 ${isDarkMode ? darkBg : 'bg-green-200'}`}>
+      <div className={`fixed top-0 right-0 h-full w-64 shadow-lg transform ${isSidebarOpen ? "translate-x-0" : "translate-x-full"} transition-transform duration-300 z-50 ${isDarkMode ? darkBg : 'bg-emerald-300'}`}>
         <div className="flex flex-col mt-20 px-6 space-y-6">
           {['Home','Produtos','Quem somos','Referências','Jogo'].map((item,i)=>(
             <p 
               key={i} 
-              className="text-white font-semibold text-lg cursor-pointer hover:text-green-200" 
+              className="text-white font-semibold text-lg cursor-pointer hover:text-emerald-00" 
               onClick={() => {
                 let rota = '/';
                 switch(item) {
