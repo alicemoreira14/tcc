@@ -36,12 +36,10 @@ const Produtos = () => {
 
   const quadrados = [
     { tituloPreto: "MODO DE FUNCIONAMENTO", textoVerde: `1 O usuário liga o dispositivo.
-2 Abre o app e escolhe o modo de respiração (ex: Relaxamento).
-3 O app envia os parâmetros de respiração e aroma desejado.
+2 Abre o app e coloca modo meditação.
+3 O app envia os parâmetros de respiração e aroma.
 4 O dispositivo:
 Controla o brilho do LED para guiar a respiração.
-Vibra durante a fase de “segurar”.
-Ativa o aroma selecionado no início da inspiração.
 Reproduz uma meditação correspondente ao momento.` },
   ];
 
