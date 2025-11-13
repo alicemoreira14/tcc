@@ -5,15 +5,14 @@ import darkMode from '../assets/dark-mode.png';
 import menu from '../assets/menu.png';
 import setaEsquerda from '../assets/seta-esquerda.png';
 import setaDireita from '../assets/seta-direita.png';
-import produto1 from '../assets/produto1.png';
-import produto2 from '../assets/produto2.png';
 import produto3 from '../assets/produto3.png';
-import produto4 from '../assets/produto4.png';
 import produto5 from '../assets/produto5.png';
 import produto6 from '../assets/produto6.png';
-import produto7 from '../assets/produto7.png';
 import produto8 from '../assets/produto8.png';
 import produto9 from '../assets/produto9.png';
+import produto10 from '../assets/produto10.jpeg';
+import produto11 from '../assets/produto11.jpeg';
+import produto12 from '../assets/produto12.jpeg';
 
 const Produtos = () => {
   const navigate = useNavigate();
@@ -62,18 +61,17 @@ Digite R para ativar o modo de rodízio automático de aromas, onde os três dif
 Digite r para desativar o modo de rodízio automático e desligar todos os difusores.` }
   ];
 
-  const produtos = [produto1, produto2, produto3, produto4, produto5, produto6, produto7, produto8, produto9];
+  const produtos = [ produto3,produto5, produto6,produto8, produto9,produto10,produto11,produto12];
 
   const nomesProdutos = [
-    "Arduino Uno/Nano",
-    "Módulo Bluetooth HC-05 ou HM-10",
     "LED RGB",
-    "Motor vibratório",
     "Módulo DFPlayer Mini + Cartão microSD",
     "Alto-falante pequeno",
-    "Botão push-button",
     "Módulo atomizador ultrassônico",
-    "Cartão microSD 128gb"
+    "Cartão microSD 128gb",
+    "Rele",
+    "Esp32",
+    "Fonte ajustavel para protoboard"
   ];
 
   const prev = () => setIndex(prev => (prev === 0 ? quadrados.length - 1 : prev - 1));
